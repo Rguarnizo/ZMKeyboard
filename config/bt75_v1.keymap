@@ -32,13 +32,9 @@ kscan0: kscan {
 
     /* Filas físicas */
     row-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>,
-                <&gpio0 11 GPIO_ACTIVE_LOW>,
-                <&gpio0 12 GPIO_ACTIVE_LOW>,
-                <&gpio0 13 GPIO_ACTIVE_LOW>,
+                <&gpio0 16 GPIO_ACTIVE_LOW>,
                 <&gpio0 14 GPIO_ACTIVE_LOW>,
                 <&gpio0 15 GPIO_ACTIVE_LOW>,
-                <&gpio0 16 GPIO_ACTIVE_LOW>,
-                <&gpio0 17 GPIO_ACTIVE_LOW>,
                 <&gpio0 18 GPIO_ACTIVE_LOW>,
                 <&gpio0 19 GPIO_ACTIVE_LOW>;
 
@@ -50,8 +46,6 @@ kscan0: kscan {
                 <&pcf8575 5 GPIO_ACTIVE_LOW>,
                 <&pcf8575 6 GPIO_ACTIVE_LOW>,
                 <&pcf8575 7 GPIO_ACTIVE_LOW>,
-                <&pcf8575 8 GPIO_ACTIVE_LOW>,
-                <&pcf8575 9 GPIO_ACTIVE_LOW>,
                 <&pcf8575 10 GPIO_ACTIVE_LOW>,
                 <&pcf8575 11 GPIO_ACTIVE_LOW>,
                 <&pcf8575 12 GPIO_ACTIVE_LOW>,
@@ -61,8 +55,8 @@ kscan0: kscan {
                 <&pcf8575 16 GPIO_ACTIVE_LOW>,
                 <&pcf8575 17 GPIO_ACTIVE_LOW>;
 
-    row-count = <10>;
-    col-count = <17>;
+    row-count = <6>;
+    col-count = <15>;
 };
 
 /* ---------------------------
