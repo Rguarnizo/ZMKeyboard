@@ -20,5 +20,5 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: shwiqqi_sphynx
+    shield: bt75_v1
     # snippet: zmk-usb-logging
