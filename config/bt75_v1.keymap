@@ -1,76 +1,14 @@
 / {
-    chosen {
-        zmk,kscan = &kscan0;
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+                &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P
+                &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L
+                &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M
+                &kp SPACE  &kp ENTER
+            >;
+        };
     };
 };
-
-/* ---------------------------
- * I2C bus en nice!nano v2
- * D2 = SDA
- * D3 = SCL
- * --------------------------- */
-&i2c0 {
-    status = "okay";
-    sda-pin = <2>;
-    scl-pin = <3>;
-
-    pcf8575: pcf8575@20 {
-        compatible = "ti,pcf8575";
-        reg = <0x20>;       /* Dirección I2C, cambia si tu placa usa otra */
-        status = "okay";
-    };
-};
-
-/* ---------------------------------
- * Matriz del teclado
- * Filas: D10 … D19   (GPIO nativos)
- * Columnas: P01 … P17 del PCF8575
- * --------------------------------- */
-kscan0: kscan {
-    compatible = "zmk,kscan-gpio-matrix";
-    label = "KSCAN0";
-
-    /* Filas físicas */
-    row-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>,
-                <&gpio0 16 GPIO_ACTIVE_LOW>,
-                <&gpio0 14 GPIO_ACTIVE_LOW>,
-                <&gpio0 15 GPIO_ACTIVE_LOW>,
-                <&gpio0 18 GPIO_ACTIVE_LOW>,
-                <&gpio0 19 GPIO_ACTIVE_LOW>;
-
-    /* Columnas desde PCF8575 */
-    col-gpios = <&pcf8575 1 GPIO_ACTIVE_LOW>,
-                <&pcf8575 2 GPIO_ACTIVE_LOW>,
-                <&pcf8575 3 GPIO_ACTIVE_LOW>,
-                <&pcf8575 4 GPIO_ACTIVE_LOW>,
-                <&pcf8575 5 GPIO_ACTIVE_LOW>,
-                <&pcf8575 6 GPIO_ACTIVE_LOW>,
-                <&pcf8575 7 GPIO_ACTIVE_LOW>,
-                <&pcf8575 10 GPIO_ACTIVE_LOW>,
-                <&pcf8575 11 GPIO_ACTIVE_LOW>,
-                <&pcf8575 12 GPIO_ACTIVE_LOW>,
-                <&pcf8575 13 GPIO_ACTIVE_LOW>,
-                <&pcf8575 14 GPIO_ACTIVE_LOW>,
-                <&pcf8575 15 GPIO_ACTIVE_LOW>,
-                <&pcf8575 16 GPIO_ACTIVE_LOW>,
-                <&pcf8575 17 GPIO_ACTIVE_LOW>;
-
-    row-count = <6>;
-    col-count = <15>;
-};
-
-/* ---------------------------
- * KEYMAP
- * --------------------------- */
-&keymap {
-    compatible = "zmk,keymap";
-
-    default_layer {
-        bindings = <
-            /* Aquí va tu layout real 75%. Esto es solo ejemplo */
-            &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P
-            &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L
-            &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M
-            &kp SPACE  &kp ENTER
-        >;
-    };

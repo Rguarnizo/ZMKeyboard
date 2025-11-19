@@ -1,0 +1,48 @@
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+};
+
+&i2c0 {
+    status = "okay";
+    sda-pin = <2>;
+    scl-pin = <3>;
+
+    pcf8575: pcf8575@20 {
+        compatible = "ti,pcf8575";
+        reg = <0x20>;
+        status = "okay";
+    };
+};
+
+kscan0: kscan {
+    compatible = "zmk,kscan-gpio-matrix";
+    label = "KSCAN0";
+
+    row-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>,
+                <&gpio0 16 GPIO_ACTIVE_LOW>,
+                <&gpio0 14 GPIO_ACTIVE_LOW>,
+                <&gpio0 15 GPIO_ACTIVE_LOW>,
+                <&gpio0 18 GPIO_ACTIVE_LOW>,
+                <&gpio0 19 GPIO_ACTIVE_LOW>;
+
+    col-gpios = <&pcf8575 1 GPIO_ACTIVE_LOW>,
+                <&pcf8575 2 GPIO_ACTIVE_LOW>,
+                <&pcf8575 3 GPIO_ACTIVE_LOW>,
+                <&pcf8575 4 GPIO_ACTIVE_LOW>,
+                <&pcf8575 5 GPIO_ACTIVE_LOW>,
+                <&pcf8575 6 GPIO_ACTIVE_LOW>,
+                <&pcf8575 7 GPIO_ACTIVE_LOW>,
+                <&pcf8575 8 GPIO_ACTIVE_LOW>,
+                <&pcf8575 9 GPIO_ACTIVE_LOW>,
+                <&pcf8575 10 GPIO_ACTIVE_LOW>,
+                <&pcf8575 11 GPIO_ACTIVE_LOW>,
+                <&pcf8575 12 GPIO_ACTIVE_LOW>,
+                <&pcf8575 13 GPIO_ACTIVE_LOW>,
+                <&pcf8575 14 GPIO_ACTIVE_LOW>,
+                <&pcf8575 15 GPIO_ACTIVE_LOW>;
+
+    row-count = <6>;
+    col-count = <15>;
+};
