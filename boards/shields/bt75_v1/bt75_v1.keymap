@@ -23,5 +23,5 @@
                 &kp LGUI &kp LALT &kp SPACE &kp RALT &kp RGUI &kp LEFT &kp DOWN &kp RIGHT
             >;
         };
-    }
+    };
 };
