@@ -19,5 +19,5 @@
 #
 ---
 include:
-  - board: bt75_v1
+  - board: Rudeyboard
     # snippet: zmk-usb-logging
