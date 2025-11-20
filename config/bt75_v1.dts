@@ -1,0 +1,72 @@
+/dts-v1/;
+/ {
+    chosen {
+        /* Decimos a ZMK que use este kscan */
+        zmk,kscan = &kscan0;
+        zmk,matrix-transform = &kbd_transform;
+    };
+};
+
+/ {
+    /* --- I2C bus (ajusta &i2c0 si tu placa expone &i2c1) --- */
+    &i2c0 {
+        status = "okay";
+
+        /* Nodo del MCP23017 en la dirección 0x20 (ajusta si pones A0/A1/A2) */
+        mcp23017: gpio@20 {
+            compatible = "microchip,mcp23017";
+            reg = <0x20>;
+            gpio-controller;
+            #gpio-cells = <2>;
+            ngpios = <16>;
+            status = "okay";
+        };
+    };
+
+    /* --- kscan (matrix) usando filas del Nice!Nano y columnas desde el MCP23017 --- */
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        status = "okay";
+
+        /* ROW GPios: ejemplo — AJUSTA ESTOS A LOS PINS QUE USARÁS EN TU NICE!NANO */
+        /* Ejemplo: &gpio0 11 => P0.11 (ver tu pinout). Pon exactamente 6 entradas. */
+        row-gpios = <&gpio0 11 0>,  /* Row 0 */
+                    <&gpio0 12 0>,  /* Row 1 */
+                    <&gpio0 13 0>,  /* Row 2 */
+                    <&gpio0 14 0>,  /* Row 3 */
+                    <&gpio0 15 0>,  /* Row 4 */
+                    <&gpio0 16 0>;  /* Row 5 */
+
+        /* COL GPios: referenciamos al controlador GPIO del MCP23017 */
+        /* Usamos 15 columnas: 0..14 (mcp23017 tiene 16 pines, 0..15) */
+        col-gpios = <&mcp23017 0 0>,  /* Col 0 = MCP GPIO 0 */
+                    <&mcp23017 1 0>,  /* Col 1 */
+                    <&mcp23017 2 0>,  /* Col 2 */
+                    <&mcp23017 3 0>,  /* Col 3 */
+                    <&mcp23017 4 0>,  /* Col 4 */
+                    <&mcp23017 5 0>,  /* Col 5 */
+                    <&mcp23017 6 0>,  /* Col 6 */
+                    <&mcp23017 7 0>,  /* Col 7 */
+                    <&mcp23017 8 0>,  /* Col 8 */
+                    <&mcp23017 9 0>,  /* Col 9 */
+                    <&mcp23017 10 0>, /* Col 10 */
+                    <&mcp23017 11 0>, /* Col 11 */
+                    <&mcp23017 12 0>, /* Col 12 */
+                    <&mcp23017 13 0>, /* Col 13 */
+                    <&mcp23017 14 0>; /* Col 14 */
+
+        /* Debounce / polling — opcional, ZMK tiene parámetros globales también */
+        debounce-press = <8>;
+        debounce-release = <8>;
+    };
+};
+
+/* --- matrix transform: ZMK necesita saber el tamaño lógico del teclado --- */
+kbd_transform: matrix_transform {
+    compatible = "zmk,matrix-transform";
+    rows = <6>;
+    columns = <15>;
+
+    /* Aquí podrías poner 'map = < ... >' si quisieras reordenar posiciones físicas -> lógicas.
+       Lo dejamos en orden RC(r,c) por defecto (fila mayor). */
+};
