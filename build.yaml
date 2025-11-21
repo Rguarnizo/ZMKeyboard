@@ -19,5 +19,6 @@
 #
 ---
 include:
-  - board: Rudeyboard
+  - board: nice_nano_v2
+    shield: Rudeyboard
     # snippet: zmk-usb-logging
