@@ -1,4 +1,3 @@
-/dts-v1/;
 / {
     chosen {
         /* Decimos a ZMK que use este kscan */
