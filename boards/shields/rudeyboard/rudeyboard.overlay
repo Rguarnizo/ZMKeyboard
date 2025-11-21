@@ -6,7 +6,8 @@
         reg = <0x20>;
 
         ngpios = <16>;
-
+        sda-pin = <17>;   // P0.15
+        scl-pin = <20>;   // P0.22
         gpio-controller;
         #gpio-cells = <2>;
         label = "MCP23017";
