@@ -1,4 +1,17 @@
-#include <dt-bindings/zmk/matrix_transform.h>
+&i2c0 {
+    status = "okay";
+
+    mcp23017: mcp23017@20 {
+        compatible = "microchip,mcp230xx";
+        reg = <0x20>;
+
+        ngpios = <16>;
+
+        gpio-controller;
+        #gpio-cells = <2>;
+        label = "MCP23017";
+    };
+};
 
 / {
     model = "Rudeyboard";
@@ -12,6 +25,8 @@
         label = "KSCAN";
         rows = <6>;
         columns = <15>;
+        diode-direction = "col2row";
+
 
         row-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>,
                     <&gpio0 3 GPIO_ACTIVE_LOW>,
@@ -20,35 +35,20 @@
                     <&gpio0 6 GPIO_ACTIVE_LOW>,
                     <&gpio0 7 GPIO_ACTIVE_LOW>;
 
-        col-gpios = <&mcp 0 GPIO_ACTIVE_LOW>,
-                    <&mcp 1 GPIO_ACTIVE_LOW>,
-                    <&mcp 2 GPIO_ACTIVE_LOW>,
-                    <&mcp 3 GPIO_ACTIVE_LOW>,
-                    <&mcp 4 GPIO_ACTIVE_LOW>,
-                    <&mcp 5 GPIO_ACTIVE_LOW>,
-                    <&mcp 6 GPIO_ACTIVE_LOW>,
-                    <&mcp 7 GPIO_ACTIVE_LOW>,
-                    <&mcp 8 GPIO_ACTIVE_LOW>,
-                    <&mcp 9 GPIO_ACTIVE_LOW>,
-                    <&mcp 10 GPIO_ACTIVE_LOW>,
-                    <&mcp 11 GPIO_ACTIVE_LOW>,
-                    <&mcp 12 GPIO_ACTIVE_LOW>,
-                    <&mcp 13 GPIO_ACTIVE_LOW>,
-                    <&mcp 14 GPIO_ACTIVE_LOW>;
-    };
-};
-
-&i2c0 {
-    status = "okay";
-    mcp: mcp23017@20 {
-        compatible = "microchip,mcp23017";
-        status = "okay";
-        gpio-controller;
-        wakeup-source;
-        reg = <0x20>;
-        #gpio-cells = <2>;
-        ngpios = <16>;
-        int-gpios = <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        label = "MCP23017";
+        col-gpios = <&mcp23017 0 GPIO_ACTIVE_LOW>,
+                    <&mcp23017 1 GPIO_ACTIVE_LOW>,
+                    <&mcp23017 2 GPIO_ACTIVE_LOW>,
+                    <&mcp23017 3 GPIO_ACTIVE_LOW>,
+                    <&mcp23017 4 GPIO_ACTIVE_LOW>,
+                    <&mcp23017 5 GPIO_ACTIVE_LOW>,
+                    <&mcp23017 6 GPIO_ACTIVE_LOW>,
+                    <&mcp23017 7 GPIO_ACTIVE_LOW>,
+                    <&mcp23017 8 GPIO_ACTIVE_LOW>,
+                    <&mcp23017 9 GPIO_ACTIVE_LOW>,
+                    <&mcp23017 10 GPIO_ACTIVE_LOW>,
+                    <&mcp23017 11 GPIO_ACTIVE_LOW>,
+                    <&mcp23017 12 GPIO_ACTIVE_LOW>,
+                    <&mcp23017 13 GPIO_ACTIVE_LOW>,
+                    <&mcp23017 14 GPIO_ACTIVE_LOW>;
     };
 };

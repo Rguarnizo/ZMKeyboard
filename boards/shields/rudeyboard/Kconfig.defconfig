@@ -3,4 +3,7 @@ if SHIELD_RUDEYBOARD
 config ZMK_KEYBOARD_NAME
     default "Rudeyboard"
 
+config I2C
+    default y
+
 endif
