@@ -45,7 +45,7 @@
             , <&mcp 6 GPIO_ACTIVE_HIGH>    /* COL 6 */
             , <&mcp 7 GPIO_ACTIVE_HIGH>   /* COL 7 */
             , <&mcp 8 GPIO_ACTIVE_HIGH>   /* COL 8 */
-            , <&mcp 9 GACTIVE_HIGH>   /* COL 9 */
+            , <&mcp 9 GPIO_ACTIVE_HIGH>   /* COL 9 */
             , <&mcp 10 GPIO_ACTIVE_HIGH>   /* COL 10 */
             , <&mcp 11 GPIO_ACTIVE_HIGH>   /* COL 11 */
             , <&mcp 12 GPIO_ACTIVE_HIGH>   /* COL 12 */
