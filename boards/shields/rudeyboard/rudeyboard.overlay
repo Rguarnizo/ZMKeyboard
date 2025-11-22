@@ -2,9 +2,6 @@
 
 &i2c0 {
     status = "okay";
-    pinctrl-0 = <&i2c0_default>;
-    pinctrl-1 = <&i2c0_sleep>;
-    pinctrl-names = "default", "sleep";
 
     mcp23017: mcp23017@20 {
         compatible = "microchip,mcp230xx";
@@ -18,21 +15,6 @@
     };
 };
 
-pinctrl_i2c0: &pinctrl {
-        i2c0_default: i2c0_default {
-            group1 {
-                psels = <
-                NRF_PSEL(I2C_SDA, 0, 17)
-                NRF_PSEL(I2C_SCL, 0, 20)
-            >;
-            };
-        };
-        i2c0_sleep: i2c0_sleep {
-        group1 {
-            /* Sin pines, modo sleep */
-        };
-    };
-};
 
 / {
     model = "Rudeyboard";
