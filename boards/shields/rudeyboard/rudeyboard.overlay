@@ -1,20 +1,11 @@
-&i2c0 {
-    status = "okay";
-    pinctrl-0 = <&i2c0_default>;
-    pinctrl-names = "default";
-    mcp23017: mcp23017@20 {
-        compatible = "microchip,mcp230xx";
-        reg = <0x20>;
-
-        ngpios = <16>;
-
-        gpio-controller;
-        #gpio-cells = <2>;
-        label = "MCP23017";
-    };
-};
-
 / {
+    model = "Rudeyboard";
+
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
+    // --- PINCTRL BLOQUE ---
     pinctrl_i2c0: pinctrl_i2c0 {
         i2c0_default: i2c0_default {
             group1 {
@@ -25,18 +16,31 @@
     };
 };
 
-/ {
-    model = "Rudeyboard";
+/* --- I2C MASTER --- */
+&i2c0 {
+    compatible = "nordic,nrf-twim";
+    status = "okay";
 
-    chosen {
-        zmk,kscan = &kscan0;
+    pinctrl-0 = <&i2c0_default>;
+    pinctrl-names = "default";
+
+    mcp23017: mcp23017@20 {
+        compatible = "microchip,mcp23017";
+        reg = <0x20>;
+        status = "okay";
+
+        gpio-controller;
+        #gpio-cells = <2>;
+        ngpios = <16>;
     };
+};
 
+/* --- KSCAN MATRIX --- */
+&{/} {
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
         diode-direction = "col2row";
-
 
         row-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>,
                     <&gpio0 3 GPIO_ACTIVE_LOW>,
