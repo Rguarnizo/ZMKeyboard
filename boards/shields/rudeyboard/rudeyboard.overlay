@@ -1,13 +1,13 @@
 &i2c0 {
     status = "okay";
-
+    pinctrl-0 = <&i2c0_default>;
+    pinctrl-names = "default";
     mcp23017: mcp23017@20 {
         compatible = "microchip,mcp230xx";
         reg = <0x20>;
 
         ngpios = <16>;
-        pinctrl-0 = <&i2c0_default>;
-        pinctrl-names = "default";
+
         gpio-controller;
         #gpio-cells = <2>;
         label = "MCP23017";
