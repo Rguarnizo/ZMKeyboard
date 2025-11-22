@@ -1,14 +1,26 @@
-&pro_micro_i2c {
+
+pinctrl_i2c0: pinctrl_i2c0 {
+        i2c0_default: i2c0_default {
+            group1 {
+                psels = <NRF_PSEL(I2C_SDA, 0, 17)>,
+                        <NRF_PSEL(I2C_SCL, 0, 20)>;
+            };
+        };
+};
+
+&i2c0 {
     status = "okay";
+    pinctrl-0 = <&i2c0_default>;
+    pinctrl-names = "default";
 
     mcp23017: mcp23017@20 {
         compatible = "microchip,mcp230xx";
-        reg = <0x20>;
-
-        ngpios = <16>;
-        wakeup-source;
+        status = "okay";
         gpio-controller;
+        wakeup-source;
+        reg = <0x20>;
         #gpio-cells = <2>;
+        ngpios = <16>;
         label = "MCP23017";
     };
 };
