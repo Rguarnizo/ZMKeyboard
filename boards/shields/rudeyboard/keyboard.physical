@@ -1,0 +1,113 @@
+# keyboard.physical — ZMK Physical Layout Definition
+# Coherente con tu matrix-transform (6x15) y tu keymap de 6 filas.
+
+meta:
+  version: 1.0
+
+layout:
+  rows: 6
+  columns: 15
+
+  # Cada entry corresponde EXACTAMENTE al orden de tu keymap y a tu RC(row,col)
+
+  keys:
+    # Row 0 — 14 teclas
+    - { row: 0, col: 0 }
+    - { row: 0, col: 1 }
+    - { row: 0, col: 2 }
+    - { row: 0, col: 3 }
+    - { row: 0, col: 4 }
+    - { row: 0, col: 5 }
+    - { row: 0, col: 6 }
+    - { row: 0, col: 7 }
+    - { row: 0, col: 8 }
+    - { row: 0, col: 9 }
+    - { row: 0, col: 10 }
+    - { row: 0, col: 11 }
+    - { row: 0, col: 12 }
+    - { row: 0, col: 13 }
+
+    # Row 1 — 15 teclas
+    - { row: 1, col: 0 }
+    - { row: 1, col: 1 }
+    - { row: 1, col: 2 }
+    - { row: 1, col: 3 }
+    - { row: 1, col: 4 }
+    - { row: 1, col: 5 }
+    - { row: 1, col: 6 }
+    - { row: 1, col: 7 }
+    - { row: 1, col: 8 }
+    - { row: 1, col: 9 }
+    - { row: 1, col: 10 }
+    - { row: 1, col: 11 }
+    - { row: 1, col: 12 }
+    - { row: 1, col: 13 }
+    - { row: 1, col: 14 }
+
+    # Row 2 — 15 teclas
+    - { row: 2, col: 0 }
+    - { row: 2, col: 1 }
+    - { row: 2, col: 2 }
+    - { row: 2, col: 3 }
+    - { row: 2, col: 4 }
+    - { row: 2, col: 5 }
+    - { row: 2, col: 6 }
+    - { row: 2, col: 7 }
+    - { row: 2, col: 8 }
+    - { row: 2, col: 9 }
+    - { row: 2, col: 10 }
+    - { row: 2, col: 11 }
+    - { row: 2, col: 12 }
+    - { row: 2, col: 13 }
+    - { row: 2, col: 14 }
+
+    # Row 3 — 14 teclas (tu transform sólo tiene 14)
+    - { row: 3, col: 0 }
+    - { row: 3, col: 1 }
+    - { row: 3, col: 2 }
+    - { row: 3, col: 3 }
+    - { row: 3, col: 4 }
+    - { row: 3, col: 5 }
+    - { row: 3, col: 6 }
+    - { row: 3, col: 7 }
+    - { row: 3, col: 8 }
+    - { row: 3, col: 9 }
+    - { row: 3, col: 10 }
+    - { row: 3, col: 11 }
+    - { row: 3, col: 12 }
+    - { row: 3, col: 13 }
+
+    # Row 4 — 14 teclas (tu transform repite row 3 — asumo error de dedo)
+    # CONSIDERACIÓN:
+    # Tu transform repite 'RC(3,x)' dos veces. Lo corregí a 'row 4'.
+    # Si realmente querías duplicar la 3, dime.
+
+    - { row: 4, col: 0 }
+    - { row: 4, col: 1 }
+    - { row: 4, col: 2 }
+    - { row: 4, col: 3 }
+    - { row: 4, col: 4 }
+    - { row: 4, col: 5 }
+    - { row: 4, col: 6 }
+    - { row: 4, col: 7 }
+    - { row: 4, col: 8 }
+    - { row: 4, col: 9 }
+    - { row: 4, col: 10 }
+    - { row: 4, col: 11 }
+    - { row: 4, col: 12 }
+    - { row: 4, col: 13 }
+
+    # Row 5 — tecla dividida (espacio modificado)
+    # En tu transform row 5 solo tiene:
+    # RC(4,0) RC(4,1) RC(4,2) __ RC(4,5) __ RC(4,9) RC(4,10) RC(4,11) RC(4,12) RC(4,13) RC(4,14)
+    # (Hay 10 teclas reales)
+    - { row: 5, col: 0 }
+    - { row: 5, col: 1 }
+    - { row: 5, col: 2 }
+    - { row: 5, col: 5 }
+    - { row: 5, col: 9 }
+    - { row: 5, col: 10 }
+    - { row: 5, col: 11 }
+    - { row: 5, col: 12 }
+    - { row: 5, col: 13 }
+    - { row: 5, col: 14 }
