@@ -1,19 +1,6 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 
-&i2c0 {
-    status = "okay";
 
-    mcp23017: mcp23017@20 {
-        compatible = "microchip,mcp230xx";
-        status = "okay";
-        gpio-controller;
-        wakeup-source;
-        reg = <0x20>;
-        #gpio-cells = <2>;
-        ngpios = <16>;
-        label = "MCP23017";
-    };
-};
 
 
 / {
@@ -68,4 +55,19 @@
                     <&mcp23017 13 GPIO_ACTIVE_HIGH>,
                     <&mcp23017 14 GPIO_ACTIVE_HIGH>;
     };
+
+    &i2c0 {
+    status = "okay";
+
+    mcp23017: mcp23017@20 {
+        compatible = "microchip,mcp230xx";
+        status = "okay";
+        gpio-controller;
+        wakeup-source;
+        reg = <0x20>;
+        #gpio-cells = <2>;
+        ngpios = <16>;
+        label = "MCP23017";
+    };
+};
 };
