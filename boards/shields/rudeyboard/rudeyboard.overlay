@@ -21,7 +21,7 @@
 
     chosen {
         zmk,kscan = &kscan0;
-        zmk,physical-layout = &zmk_matrix_transform_default;
+        zmk,matrix_transform = &zmk_matrix_transform_default;
     };
 
     zmk_matrix_transform_default: matrix_transform {
