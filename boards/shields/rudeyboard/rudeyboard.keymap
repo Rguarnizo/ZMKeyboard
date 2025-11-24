@@ -3,8 +3,6 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define DEFAULT 0
-#define LAYER_1 1
-#define BT_LAYER 2
 
 / {
     keymap {
