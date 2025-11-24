@@ -2,8 +2,8 @@ file_format: "1"
 id: rudeyboard
 name: "Rudeyboard Wireless Keyboard"
 type: shield
-url: "https://github.com/turepo/zmk-config"
-requires: [nrfmicro_13]
+url: "https://github.com/Rguarnizo/ZMKeyboard"
+requires: ["nice_nano_v2"]
 exposes: []
 features:
   - keys
