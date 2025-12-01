@@ -1,7 +1,7 @@
 #include "nice_nano_v2-pinctrl.dtsi"
 
 &i2c0 {
-    compatible = "nordic,nrf-twim";
+    compatible = "nordic,nrf-twi";
     status = "okay";
     pinctrl-0 = <&i2c0_default>;
     pinctrl-1 = <&i2c0_sleep>;
