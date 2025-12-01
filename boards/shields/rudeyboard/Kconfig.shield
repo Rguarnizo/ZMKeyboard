@@ -3,3 +3,14 @@
 
 config SHIELD_RUDEYBOARD
     def_bool $(shields_list_contains,rudeyboard)
+
+config I2C
+    default y
+
+config ZMK_KSCAN_MATRIX_POLLING
+    default y
+
+config GPIO_MCP230XX
+    default y
+
+endif
