@@ -12,5 +12,3 @@ config ZMK_KSCAN_MATRIX_POLLING
 
 config GPIO_MCP230XX
     default y
-
-endif
